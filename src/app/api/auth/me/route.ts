@@ -17,6 +17,11 @@ export async function GET() {
 
   const user = await prisma.user.findUnique({
     where: { id: decoded.id },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+    },
   });
 
   return NextResponse.json({ user });
